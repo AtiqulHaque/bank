@@ -7,9 +7,6 @@ createdb:
 dropdb:
 	docker exec -it postgres12 dropdb simple_bank
 
-postgres:
-	docker run --name postgres12 -p 5434:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:12-alpine
-
 migrateup:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5434/simple_bank?sslmode=disable" -verbose up
 
@@ -19,4 +16,4 @@ migratedown:
 sqlc:
 	sqlc generate
 
-.PHONY: createdb dropdb postgres migrateup migratedown sqlc
+.PHONY: createdb dropdb migrateup migratedown sqlc
