@@ -22,13 +22,10 @@ func TestMain(m *testing.M){
 	conn, err := sql.Open(dbDriver, dbSource)
 
 	if err != nil {
-		log.Fatal("Cannot initialize database connectins", err)
+		log.Fatal("Cannot initialize database connections", err)
 	}
-
-
+	
 	testQueries = New(conn)
-
-
 	os.Exit(m.Run())
 }
 
